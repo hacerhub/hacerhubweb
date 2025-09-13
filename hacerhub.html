@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== Core Meta ===== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>hacerhub — Premium Sportswear Jerseys | Fuel Your Game </title>
+  <meta name="description" content="hacerhub crafts premium, performance-focused sportswear jerseys. Stylish, durable, and pro-level comfort. Gear up. Game on." />
+  <meta name="keywords" content="hacerhub, sportswear jerseys, football jersey, soccer jersey, custom jerseys, premium sportswear" />
+  <meta name="author" content="hacerhub Sportswear" />
+
+  <!-- ===== Open Graph / Twitter ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="hacerhub — Premium Sportswear Jerseys" />
+  <meta property="og:description" content="Unleash Your Game in Style with premium sportswear jerseys by hacerhub." />
+  <meta property="og:url" content="https://www.example.com/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1600&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="hacerhub — Premium Sportswear Jerseys" />
+  <meta name="twitter:description" content="Performance, quality, innovation. hacerhub jerseys for athletes." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1600&auto=format&fit=crop" />
+
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/862/862727.png" type="image/png" />
+
+  <!-- ===== Fonts & Icons ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+  <!-- ===== Base Styles ===== -->
+  <style>
+    /* CSS Reset (minimal) */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;min-height:100dvh;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    img,video{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* Theme Tokens */
+    :root{
+      --bg: #0d0f12;
+      --surface: #12151a;
+      --text: #e9eef5;
+      --muted: #a7b0bc;
+      --accent: #00ffa3;
+      --accent-2:#2078ff;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --transition: .3s ease;
+      --grad: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    /* Light theme */
+    html.light{
+      --bg:#ffffff;
+      --surface:#f5f7fb;
+      --text:#0e1420;
+      --muted:#4a5568;
+      --border: rgba(0,0,0,.12);
+      --shadow: 0 10px 24px rgba(15,23,42,.08);
+    }
+    /* Respect system pref on first load; JS will persist choice */
+    @media (prefers-color-scheme: light) {
+      html:not(.dark):not(.light){--bg:#ffffff;--surface:#f5f7fb;--text:#0e1420;--muted:#4a5568;--border:rgba(0,0,0,.12);--shadow:0 10px 24px rgba(15,23,42,.08)}
+    }
+
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+    /* Container */
+    .container{width:min(1200px,92%);margin-inline:auto}
+
+    /* Navbar */
+    .nav{position:fixed;inset-inline:0;top:0;z-index:1000;transition:background var(--transition),box-shadow var(--transition);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-family:Oswald,sans-serif;font-weight:700;letter-spacing:.5px}
+    .brand-badge{width:36px;height:36px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#0b1020;box-shadow:0 4px 14px rgba(32,120,255,.35)}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{font-weight:600;opacity:.9}
+    .nav-links a:hover{opacity:1}
+    .theme-btn{border:1px solid var(--border);background:transparent;border-radius:999px;padding:8px 12px;display:flex;gap:8px;align-items:center;cursor:pointer;color:var(--text)}
+    .nav.scrolled{background:color-mix(in srgb, var(--bg) 92%, transparent);box-shadow:var(--shadow);backdrop-filter:saturate(140%) blur(6px);}
+
+    /* Hero */
+    header.hero{position:relative;min-height:92dvh;display:grid;place-items:center;isolation:isolate}
+    .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;border-bottom:1px solid var(--border)}
+    .hero-media video{width:100%;height:100%;object-fit:cover;filter:brightness(.6) contrast(1.05)}
+    .hero-media .fallback{position:absolute;inset:0;background:
+      linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.6)),
+      url('https://images.unsplash.com/photo-1604908176997-3ec77e3c4664?q=80&w=1920&auto=format&fit=crop')
+      center/cover no-repeat;}
+    .hero-content{text-align:center;padding:120px 0}
+    .eyebrow{display:inline-block;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(0,255,163,.12);border:1px solid rgba(0,255,163,.25);padding:6px 10px;border-radius:999px}
+    .hero-title{font-family:Oswald,sans-serif;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;margin:18px 0}
+    .hero-sub{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:760px;margin:0 auto 28px}
+    .cta{display:inline-flex;gap:12px;align-items:center;border:none;border-radius:999px;padding:14px 22px;font-weight:700;cursor:pointer;background:var(--grad);color:#051225;box-shadow:0 12px 30px rgba(0,255,163,.25);transition:transform var(--transition),box-shadow var(--transition)}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(32,120,255,.28)}
+    .cta.secondary{background:transparent;color:var(--text);border:1px solid var(--border);box-shadow:none}
+    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+    /* Section base */
+    section{padding:84px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
+    .section-head h2{font-family:Oswald,sans-serif;font-size:clamp(1.6rem,2.6vw,2.2rem);margin:0}
+    .section-sub{color:var(--muted);max-width:720px}
+
+    /* Jerseys Grid */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+    .card{grid-column:span 3;background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, transparent), color-mix(in srgb, var(--surface) 100%, transparent));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(32,120,255,.18),0 8px 24px rgba(0,0,0,.24);border-color:color-mix(in srgb, var(--accent) 40%, var(--border))}
+    .card-img{aspect-ratio:4/5;overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .5s ease}
+    .card:hover .card-img img{transform:scale(1.08)}
+    .card-body{padding:16px 16px 18px}
+    .badge{display:inline-block;font-size:.75rem;border:1px solid var(--border);color:var(--muted);padding:4px 8px;border-radius:999px;margin-bottom:10px}
+    .title-price{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .title-price h3{margin:0;font-size:1.05rem}
+    .price{font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+    .about-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .about p{color:var(--muted);font-size:1.05rem}
+
+    /* Contact */
+    .contact-wrap{background:
+        radial-gradient(1200px 400px at 10% -10%, rgba(0,255,163,.08), transparent),
+        radial-gradient(1200px 500px at 110% 110%, rgba(32,120,255,.08), transparent),
+        color-mix(in srgb, var(--surface) 96%, transparent);
+      border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);box-shadow:var(--shadow);padding:34px}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .full{grid-column:1/-1}
+    input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);font:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .form-actions{display:flex;gap:12px;align-items:center;justify-content:flex-start}
+    .help{color:var(--muted);font-size:.95rem}
+
+    /* Footer */
+    footer{padding:34px 0;border-top:1px solid var(--border);color:var(--muted)}
+    .foot-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+    .foot-links{display:flex;gap:16px;flex-wrap:wrap}
+    .foot-links a{border-bottom:1px dashed transparent}
+    .foot-links a:hover{border-color:var(--muted)}
+
+    /* Utilities */
+    .fade{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+    .fade.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .card{grid-column:span 4}
+    }
+    @media (max-width: 768px){
+      .nav-links{gap:18px}
+      .about{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+      form{grid-template-columns:1fr}
+      .hero-content{padding:100px 0}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .fade{transition:none}
+      .card:hover{transform:none}
+      .cta:hover{transform:none}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="hacerhub Home">
+        <span class="brand-badge"><i class="fa-solid fa-bolt"></i></span>
+        <span>hacerhub</span>
+      </a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#jerseys">Jerseys</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i><span style="font-weight:700">Mode</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="home" class="hero" role="banner">
+    <div class="hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1600&auto=format&fit=crop">
+        <source src="https://cdn.coverr.co/videos/coverr-soccer-player-on-stadium-7711/1080p.mp4" type="video/mp4" />
+      </video>
+      <div class="fallback"></div>
+    </div>
+    <div class="container hero-content fade">
+      <span class="eyebrow">Premium Sportswear</span>
+      <h1 class="hero-title">Fuel Your Game</h1>
+      <p class="hero-sub">Performance-driven jerseys engineered for comfort, durability, and speed — so every athlete feels like a pro.</p>
+      <div class="cta-row">
+        <a href="#jerseys" class="cta"><i class="fa-solid fa-bag-shopping"></i> Shop Jerseys</a>
+        <a href="#about" class="cta secondary"><i class="fa-solid fa-circle-info"></i> Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <!-- ===== JERSEYS ===== -->
+    <section id="jerseys" aria-labelledby="jerseys-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="jerseys-title">Featured Jerseys</h2>
+          <p class="section-sub">Lightweight fabrics, breathable mesh, and pro-grade stitching. Subtle glow on hover, because swagger matters.</p>
+        </div>
+
+        <div class="grid" role="list">
+          <!-- Product Card 1 -->
+          <article class="card fade" role="listitem" aria-label="Apex Pro Jersey">
+            <div class="card-img">
+              <img src="/images/davidbekham.jpeg"
+                   alt="Apex Pro Jersey — neon trim, breathable mesh panel"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">New</span>
+              <div class="title-price">
+                <h3>David Beckham Jersey</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 2 -->
+          <article class="card fade" role="listitem" aria-label="Velocity Match Jersey">
+            <div class="card-img">
+              <img src="/images/CR7.jpeg"
+                   alt="Velocity Match Jersey — bold blue with ribbed collar"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Bestseller</span>
+              <div class="title-price">
+                <h3>CR7 Jersey</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 3 -->
+          <article class="card fade" role="listitem" aria-label="Strike Elite Jersey">
+            <div class="card-img">
+              <img src="/images/carlos.jpeg"
+                   alt="carlos Jersey — red gradient with side vents"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Limited</span>
+              <div class="title-price">
+                <h3>Carlos</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 4 -->
+          <article class="card fade" role="listitem" aria-label="Fusion Tech Jersey">
+            <div class="card-img">
+              <img src="/images/carlos.jpeg"
+                   alt="Fusion Tech Jersey — monochrome with mesh sleeves"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Limited</span>
+              <div class="title-price">
+                <h3>DECO</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 5 -->
+          <article class="card fade" role="listitem" aria-label="Storm Kit Jersey">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1560275619-466f2a8be50a?q=80&w=800&auto=format&fit=crop"
+                   alt="Storm Kit Jersey — deep green with neon piping"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Pro line</span>
+              <div class="title-price">
+                <h3>Storm Kit</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 6 -->
+          <article class="card fade" role="listitem" aria-label="Nova Flex Jersey">
+            <div class="card-img">
+              <img src="/images/ibrahim.jpeg"
+                   alt="Nova Flex Jersey — white base with bold striping"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Ultra light</span>
+              <div class="title-price">
+                <h3>Nova Flex</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 7 -->
+          <article class="card fade" role="listitem" aria-label="Pulse Aero Jersey">
+            <div class="card-img">
+              <img src="/images/batistute.jpeg"
+                   alt="Pulse Aero Jersey — navy kit with contrast sleeve"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Fan favorite</span>
+              <div class="title-price">
+                <h3>Pulse Aero</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 8 -->
+          <article class="card fade" role="listitem" aria-label="Vertex Prime Jersey">
+            <div class="card-img">
+              <img src="/images/carlos2.jpeg"
+                   alt="Vertex Prime Jersey — black-out minimal design"
+                   width="800" height="1000" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="badge">Blackout</span>
+              <div class="title-price">
+                <h3>Carlos Brazil</h3>
+                <span class="price">₹399</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="about-title">About hacerhub</h2>
+          <p class="section-sub">Built for champions. We design jerseys that fuse comfort, durability, and style — turning every match into a statement.</p>
+        </div>
+
+        <div class="about">
+          <div class="about-copy fade">
+            <h3>Performance. Quality. Innovation.</h3>
+            <p>Every hacerhub jersey is cut with precision, stitched for strength, and finished with breathable tech fabrics. Whether you’re competing or training, our gear keeps you cool, confident, and ready for the moment.</p>
+            <ul>
+              <li><strong>Performance:</strong> Featherweight, sweat-wicking mesh.</li>
+              <li><strong>Quality:</strong> Reinforced seams and colorfast dyes.</li>
+              <li><strong>Innovation:</strong> Athlete-tested fits, season after season.</li>
+            </ul>
+            <div class="form-actions" style="margin-top:10px">
+              <a href="#contact" class="cta"><i class="fa-solid fa-paper-plane"></i> Contact Sales</a>
+              <a href="#jerseys" class="cta secondary"><i class="fa-solid fa-shirt"></i> View Collection</a>
+            </div>
+          </div>
+          <div class="about-img fade" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1600700158761-2c4605708043?q=80&w=1400&auto=format&fit=crop"
+                 alt="Athlete in action wearing a premium jersey" width="1400" height="900" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="contact-title">Get in Touch</h2>
+          <p class="section-sub">We’d love to hear from you. Reach out for collaborations, team kits, bulk orders, or just to say hi.</p>
+        </div>
+
+        <div class="contact-wrap fade">
+          <form action="#" method="post" novalidate>
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your Name" autocomplete="name" required />
+
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Your Email" inputmode="email" autocomplete="email" required />
+
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" class="full" placeholder="Tell us what you need…" required></textarea>
+
+            <div class="form-actions full">
+              <button type="submit" class="cta"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+              <span class="help">We reply within 24 hours on business days.</span>
+            </div>
+          </form>
+
+          <div class="form-actions" style="margin-top:18px">
+            <a href="#" aria-label="Instagram" class="cta secondary"><i class="fa-brands fa-instagram"></i>&nbsp;Instagram</a>
+            <a href="#" aria-label="Twitter" class="cta secondary"><i class="fa-brands fa-x-twitter"></i>&nbsp;Twitter</a>
+            <a href="#" aria-label="Facebook" class="cta secondary"><i class="fa-brands fa-facebook"></i>&nbsp;Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer role="contentinfo">
+    <div class="container foot-grid">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="brand-badge"><i class="fa-solid fa-bolt"></i></span>
+        <strong>hacerhub</strong>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#jerseys">Jerseys</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="foot-copy">
+        <div>© 2025 hcerhub Sportswear</div>
+        <div><em>hacerhub — Gear Up, Game On.</em></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Structured Data: Organization + Products ===== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"HacerHub Sportswear",
+    "url":"https://www.example.com/",
+    "logo":"https://cdn-icons-png.flaticon.com/512/862/862727.png",
+    "sameAs":[
+      "https://www.instagram.com/yourhandle",
+      "https://twitter.com/yourhandle",
+      "https://facebook.com/yourhandle"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"Product","name":"Apex Pro Jersey","image":"https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"59","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Velocity Match","image":"https://images.unsplash.com/photo-1526232761682-d26e04cc9831?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"64","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Strike Elite","image":"https://images.unsplash.com/photo-1599050751795-5ec0c2b3a3aa?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"69","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Fusion Tech","image":"https://images.unsplash.com/photo-1622278647429-71f2c8f2fd5e?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"72","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Storm Kit","image":"https://images.unsplash.com/photo-1560275619-466f2a8be50a?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"65","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Nova Flex","image":"https://images.unsplash.com/photo-1616423641057-2a7a4e8fca0b?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"58","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Pulse Aero","image":"https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"61","availability":"https://schema.org/InStock"}},
+      {"@type":"Product","name":"Vertex Prime","image":"https://images.unsplash.com/photo-1602872031090-3cb2f7f9719f?q=80&w=800&auto=format&fit=crop","brand":{"@type":"Brand","name":"HacerHub"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"74","availability":"https://schema.org/InStock"}}
+    ]
+  }
+  </script>
+
+  <!-- ===== Scripts (UI, Theme, Animations, A11y) ===== -->
+  <script>
+    // Persisted theme
+    (function initTheme(){
+      const saved = localStorage.getItem('hh-theme');
+      if(saved === 'light') document.documentElement.classList.add('light');
+      if(saved === 'dark') document.documentElement.classList.add('dark');
+    })();
+
+    // Toggle theme
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isLight = html.classList.toggle('light');
+      if(isLight){ html.classList.remove('dark'); localStorage.setItem('hh-theme','light'); }
+      else { html.classList.add('dark'); localStorage.setItem('hh-theme','dark'); }
+      // swap icon
+      const i = themeToggle.querySelector('i');
+      i.classList.toggle('fa-moon'); i.classList.toggle('fa-sun');
+    });
+
+    // Navbar scroll style
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+    onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+    // Fade-in on intersect
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }});
+    }, {threshold: 0.18});
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+    // Skip link (accessibility)
+    const skip = document.createElement('a');
+    skip.href = '#content';
+    skip.textContent = 'Skip to content';
+    skip.style.cssText = 'position:absolute;left:-9999px;top:0;background:var(--grad);color:#06131f;padding:8px 12px;border-radius:8px;font-weight:700;z-index:2000';
+    skip.addEventListener('focus', () => { skip.style.left = '10px'; });
+    skip.addEventListener('blur', () => { skip.style.left = '-9999px'; });
+    document.body.prepend(skip);
+
+    // Simple client-side form guard (no backend)
+    document.querySelector('form')?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const form = e.target;
+      const valid = form.checkValidity();
+      if(!valid){ form.reportValidity(); return; }
+      alert('Thanks! Your message has been sent. We’ll get back to you soon.');
+      form.reset();
+    });
+  </script>
+
+  <!-- Small helper for screen readers -->
+  <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+</body>
+</html>
