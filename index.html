@@ -40,27 +40,29 @@
 
     /* Theme Tokens */
     :root{
-      --bg: #0d0f12;
-      --surface: #12151a;
-      --text: #e9eef5;
-      --muted: #a7b0bc;
-      --accent: #00ffa3;
-      --accent-2:#2078ff;
-      --border: rgba(255,255,255,.12);
+      --bg: #401e18;       /* background */
+      --surface: #5a2d25;  /* slightly lighter than bg for cards/sections */
+      --text: #e7cdc1;     /* main text */
+      --muted: #d4b3a6;    /* secondary text */
+      --accent: #e7cdc1;   /* primary accent */
+      --accent-2: #401e18; /* secondary accent */
+      --border: rgba(231, 205, 193, .25); /* soft border */
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 16px;
       --transition: .3s ease;
       --grad: linear-gradient(135deg, var(--accent), var(--accent-2));
     }
+
     /* Light theme */
     html.light{
-      --bg:#ffffff;
-      --surface:#f5f7fb;
-      --text:#0e1420;
-      --muted:#4a5568;
-      --border: rgba(0,0,0,.12);
-      --shadow: 0 10px 24px rgba(15,23,42,.08);
+      --bg:#e7cdc1;
+      --surface:#f5eae6;
+      --text:#401e18;
+      --muted:#6b4b44;
+      --border: rgba(64, 30, 24, .2);
+      --shadow: 0 10px 24px rgba(64, 30, 24,.15);
     }
+
     /* Respect system pref on first load; JS will persist choice */
     @media (prefers-color-scheme: light) {
       html:not(.dark):not(.light){--bg:#ffffff;--surface:#f5f7fb;--text:#0e1420;--muted:#4a5568;--border:rgba(0,0,0,.12);--shadow:0 10px 24px rgba(15,23,42,.08)}
